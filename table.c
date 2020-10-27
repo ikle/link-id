@@ -16,8 +16,26 @@ extern struct link_ops ixgbe_ops;
 struct table table[] = {
 	/* e1000e */
 
+	{ 0x105e8086, &igb_ops		},	/* 82571EB, copper	*/
+	{ 0x105f8086, &igb_ops		},	/* 82571EB, fiber	*/
+	{ 0x10608086, &igb_ops		},	/* 82571EB, serdes	*/
+	{ 0x10a48086, &igb_ops		},	/* 82571EB, quad copper	*/
+	{ 0x10a58086, &igb_ops		},	/* 82571EB, quad fiber	*/
+	{ 0x10b98086, &igb_ops		},	/* 82572EI		*/
+	{ 0x10bc8086, &igb_ops		},	/* 82571EB, quad copper LP */
+	{ 0x10d58086, &igb_ops		},	/* 82571PT, quad copper	*/
+	{ 0x10d98086, &igb_ops		},	/* 82571EB, dual serdes	*/
+	{ 0x10da8086, &igb_ops		},	/* 82571EB, quad serdes	*/
+	{ 0x107d8086, &igb_ops		},	/* 82572EI, copper	*/
+	{ 0x107e8086, &igb_ops		},	/* 82572EI, fiber	*/
+	{ 0x107f8086, &igb_ops		},	/* 82572EI, serdes	*/
+	{ 0x108b8086, &igb_ops		},	/* 82573E		*/
+	{ 0x108c8086, &igb_ops		},	/* 82573E IAMT		*/
+	{ 0x109a8086, &igb_ops		},	/* 82573L		*/
 	{ 0x10d38086, &igb_ops		},	/* 82574L		*/
+	{ 0x10f68086, &igb_ops		},	/* 82574LA		*/
 	{ 0x15028086, &igb_ops		},	/* 82579LM		*/
+	{ 0x150c8086, &igb_ops		},	/* 82583V		*/
 
 	/* igb */
 
