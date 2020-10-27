@@ -64,16 +64,31 @@ static int igb_update_checksum (struct link *o)
 
 static int igb_read_id (struct link *o, unsigned *vendor, unsigned *device)
 {
-	return	igb_validate_checksum (o)        &&
-		link_read_word (o, 0x0b, device) &&
+	unsigned c;	/* Initialization Control Word 1 */
+
+	if (!igb_validate_checksum (o)	||
+	    !link_read_word (o, 0x0a, &c))
+		return 0;
+
+	if ((c & 0x02) == 0) {		/* Load Subsystem IDs = false */
+		*vendor = 0x8086;
+		*device = 0x0000;
+		return 1;
+	}
+
+	return	link_read_word (o, 0x0b, device) &&
 		link_read_word (o, 0x0c, vendor);
 }
 
 static int igb_write_id (struct link *o, unsigned vendor, unsigned device)
 {
-	return	igb_validate_checksum (o)         &&
-		link_write_word (o, 0x0b, device) &&
-		link_write_word (o, 0x0c, vendor) &&
+	unsigned c;	/* Initialization Control Word 1 */
+
+	return	igb_validate_checksum (o)           &&
+		link_read_word (o, 0x0a, &c)        &&
+		link_write_word (o, 0x0a, c | 0x02) &&
+		link_write_word (o, 0x0b, device)   &&
+		link_write_word (o, 0x0c, vendor)   &&
 		igb_update_checksum (o);
 }
 
