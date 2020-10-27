@@ -11,6 +11,7 @@
 /* Device-specific operations table */
 
 extern struct link_ops igb_ops;
+extern struct link_ops ixgbe_ops;
 
 struct table table[] = {
 	/* e1000e */
@@ -60,6 +61,45 @@ struct table table[] = {
 	{ 0x1f408086, &igb_ops		},	/* I354, backplane 1.0	*/
 	{ 0x1f418086, &igb_ops		},	/* I354, sgmii		*/
 	{ 0x1f458086, &igb_ops		},	/* I354, backplane 2.5	*/
+
+	/* ixgbe */
+
+	{ 0x10b68086, &ixgbe_ops	},	/* 82598		*/
+
+	{ 0x10c68086, &ixgbe_ops	},	/* 82598 AF, dual port	*/
+	{ 0x10c78086, &ixgbe_ops	},	/* 82598 AF		*/
+	{ 0x10c88086, &ixgbe_ops	},	/* 82598 AT		*/
+
+	{ 0x10db8086, &ixgbe_ops	},	/* 82598EB SFP LOM	*/
+	{ 0x10dd8086, &ixgbe_ops	},	/* 82598EB CX4		*/
+
+	{ 0x10e18086, &ixgbe_ops	},	/* 82598 SR, dual port	*/
+	{ 0x10ec8086, &ixgbe_ops	},	/* 82598 CX4, dual port	*/
+
+	{ 0x10f18086, &ixgbe_ops	},	/* 82598 DA, dual port	*/
+	{ 0x10f48086, &ixgbe_ops	},	/* 82598EB XF LR	*/
+	{ 0x10f78086, &ixgbe_ops	},	/* 82599 KX4		*/
+	{ 0x10f88086, &ixgbe_ops	},	/* 82599 combo backplane */
+	{ 0x10f98086, &ixgbe_ops	},	/* 82599 CX4		*/
+	{ 0x10fb8086, &ixgbe_ops	},	/* 82599ES SFP		*/
+	{ 0x10fc8086, &ixgbe_ops	},	/* 82599 XAUI LOM	*/
+
+	{ 0x15078086, &ixgbe_ops	},	/* 82599 SFP EM		*/
+	{ 0x15088086, &ixgbe_ops	},	/* 82598 BX		*/
+	{ 0x150b8086, &ixgbe_ops	},	/* 82598 AT2		*/
+	{ 0x15148086, &ixgbe_ops	},	/* 82599 KX4 MEZZ	*/
+	{ 0x15178086, &ixgbe_ops	},	/* 82599 KR		*/
+	{ 0x151c8086, &ixgbe_ops	},	/* 82599 T3 LOM		*/
+
+	{ 0x15298086, &ixgbe_ops	},	/* 82599 SFP FCoE	*/
+	{ 0x152a8086, &ixgbe_ops	},	/* 82599 backplane FCoE	*/
+
+	{ 0x154a8086, &ixgbe_ops	},	/* 82599 SFP SF QP	*/
+	{ 0x154d8086, &ixgbe_ops	},	/* 82599 SFP SF2	*/
+	{ 0x154f8086, &ixgbe_ops	},	/* 82599 LS		*/
+
+	{ 0x15578086, &ixgbe_ops	},	/* 82599EN SFP		*/
+	{ 0x15588086, &ixgbe_ops	},	/* 82599 QSFP SF QP	*/
 
 	/* terminator */
 
